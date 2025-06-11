@@ -16,7 +16,8 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch("http://localhost:5000/api/swiggy");
+    const BASE_URL = "https://food-zone-backend-hz7e.onrender.com";
+    const data = await fetch(`${BASE_URL}/api/swiggy`);
 
     const json = await data.json();
 
