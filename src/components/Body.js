@@ -18,7 +18,6 @@ const Body = () => {
   const fetchData = async () => {
     const BASE_URL = "https://food-zone-backend-hz7e.onrender.com";
     const data = await fetch(`${BASE_URL}/api/swiggy`);
-
     const json = await data.json();
 
     setListOfRestaurant(
@@ -28,7 +27,6 @@ const Body = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
-  console.log(listOfRestaurant);
 
   const onlineStatus = useOnlineStatus();
 
@@ -39,10 +37,11 @@ const Body = () => {
   return listOfRestaurant.length === 0 ? (
     <Simmar />
   ) : (
-    <div className="body bg-[#AAB99A]">
-      <div className="Search-container flex ">
+    <div className="body bg-[#f5f5f4] min-h-screen px-4 sm:px-6   ">
+      {/* Responsive Search Container */}
+      <div className="Search-container flex flex-col sm:flex-row justify-between gap-2 sm:gap-4 mb-4">
         <input
-          className="p-1 m-4 rounded-sm w-64 text-center outline-none"
+          className="p-2 my-6 rounded-lg w-full sm:w-1/2 text-center outline-none shadow-md"
           type="text"
           placeholder="Search Here..."
           value={searchRes}
@@ -50,32 +49,37 @@ const Body = () => {
             setSearchRes(e.target.value);
           }}
         />
-        <button
-          className="border px-4  text-sm bg-[#d0ddd0] text-black rounded-lg m-4 "
-          onClick={() => {
-            let filterSearch = listOfRestaurant.filter((res) => {
-              return res.info.name
-                .toLowerCase()
-                .includes(searchRes.toLowerCase());
-            });
-            setFilterList(filterSearch);
-          }}
-        >
-          Search
-        </button>
-        <button
-          className="border px-4  text-sm bg-[#d0ddd0] text-black rounded-lg m-4 "
-          onClick={() => {
-            let filterData = listOfRestaurant.filter((res) => {
-              return res.info.avgRating > 4.5;
-            });
-            setFilterList(filterData);
-          }}
-        >
-          Top Restaurant
-        </button>
+        <div className="flex flex-col sm:flex-row -mt-5 sm:mt-1 gap-2 sm:gap-4 justify-center items-center">
+          <button
+            className="px-4 py-1.5 text-sm  font-semibold bg-[#cce3d0] text-gray-800 rounded-md m-2 shadow-sm hover:bg-[#b4d6bd] transition duration-200"
+
+            onClick={() => {
+              let filterSearch = listOfRestaurant.filter((res) => {
+                return res.info.name
+                  .toLowerCase()
+                  .includes(searchRes.toLowerCase());
+              });
+              setFilterList(filterSearch);
+            }}
+          >
+            Search
+          </button>
+          <button
+            className="px-4 py-1.5 text-sm -mt-1 sm:mt-1 font-semibold bg-[#cce3d0] text-gray-800 rounded-md m-2 shadow-sm hover:bg-[#b4d6bd] transition duration-200"
+            onClick={() => {
+              let filterData = listOfRestaurant.filter((res) => {
+                return res.info.avgRating > 4.5;
+              });
+              setFilterList(filterData);
+            }}
+          >
+            Top Restaurant
+          </button>
+        </div>
       </div>
-      <div className="res-container flex flex-wrap justify-center">
+
+      {/* Responsive Card Container */}
+      <div className="res-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 place-items-center my-8">
         {filterList.map((res) => {
           return (
             <Link key={res?.info?.id} to={"restaurants/" + res?.info?.id}>

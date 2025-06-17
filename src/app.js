@@ -12,16 +12,19 @@ import appStore from "./utils/appstore";
 import { Provider } from "react-redux";
 import Cart from "./components/Cart";
 import Login from "./components/Login";
+import Footer from "./components/Footer";
 
-
-const Grocery = lazy(() => import("./components/Grocery"));
+// const Grocery = lazy(() => import("./components/Grocery"));
 
 const AppLayout = () => {
   return (
     <Provider store={appStore}>
-      <div className="app">
+      <div className="app min-h-screen flex flex-col bg-[#fffef9]">
         <Header />
-        <Outlet />
+        <main className="flex-grow bg-[#f5f5f4]">
+          <Outlet />
+        </main>
+        <Footer />
       </div>
     </Provider>
   );
@@ -48,14 +51,14 @@ const appRouter = createBrowserRouter([
         path: "/restaurants/:resId",
         element: <RestaurantMenu />,
       },
-      {
-        path: "/grocery",
-        element: (
-          <Suspense fallback={<h1>loading...</h1>}>
-            <Grocery />
-          </Suspense>
-        ),
-      },
+      // {
+      //   path: "/grocery",
+      //   element: (
+      //     <Suspense fallback={<h1>loading...</h1>}>
+      //       <Grocery />
+      //     </Suspense>
+      //   ),
+      // },
       {
         path: "/cart",
         element: <Cart />,
@@ -63,13 +66,9 @@ const appRouter = createBrowserRouter([
     ],
     errorElement: <Error />,
   },
-  { path: "/login",
-    element: <Login />,
-
-  },
+  { path: "/login", element: <Login /> },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(<RouterProvider router={appRouter} />);
-

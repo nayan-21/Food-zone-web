@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 
+
 const Login = () => {
   const navigate = useNavigate();
   const [mobile, setMobile] = useState('');
@@ -14,6 +15,7 @@ const Login = () => {
 
   return (
     <div className="bg-gray-50 min-h-screen">
+     {/* <Navbar /> */}
       {/* Header */}
       <div className="bg-white shadow-sm py-4 px-6 flex justify-between items-center">
         <h1 className="text-orange-500 font-bold text-xl">Food Zone</h1>
