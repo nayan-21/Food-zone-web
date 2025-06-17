@@ -6,8 +6,6 @@ import { useState } from "react";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
-  // console.log(resId);
-
   const [showIndex, setShowIndex] = useState(null);
 
   const resInfo = useRestaurantMenu(resId);
@@ -15,11 +13,6 @@ const RestaurantMenu = () => {
   if (resInfo === null) return <Simmar />;
 
   const { text } = resInfo?.cards[0]?.card?.card;
-
-  // const ItemCart =
-  //   resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.c
-  // console.log(ItemCart);
-  // console.log(resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
 
   const menuCart =
     resInfo?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
@@ -34,22 +27,23 @@ const RestaurantMenu = () => {
       }
     );
 
-  console.log("M", menuCart);
-
   return (
-    <div className="menu text-center bg-[#AAB99A]">
-      <h1 className="font-bold pt-8 text-2xl mb-8">{text}</h1>
+    <div className="bg-[#f5f5f4] min-h-screen px-4 py-6 sm:px-6 md:px-12 lg:px-32">
+      <h1 className="text-xl sm:text-3xl font-bold text-center mb-6 text-gray-700">
+        {text}
+      </h1>
 
-      {menuCart.map((menu, index) => {
-        return (
+      <div className="flex text-gray-700 flex-col gap-1 max-w-4xl mx-auto sm:max-w-7xl">
+        {menuCart.map((menu, index) => (
           <MenuCart
             key={menu?.card?.card?.title}
             data={menu?.card?.card}
             showItems={index === showIndex ? true : false}
-            setShowIndex={() => setShowIndex(index)}
+           setShowIndex={() => setShowIndex(prevIndex => prevIndex === index ? null : index)}
+
           />
-        );
-      })}
+        ))}
+      </div>
     </div>
   );
 };
