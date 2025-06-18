@@ -8,6 +8,7 @@ A Swiggy-inspired food ordering web application built using **React.js**. It fet
 - 📜 View menus with dishes
 - ✨ Shimmer UI while loading
 - 📱 Simple login page for UI demo (no authentication)
+- 💤 **Lazy loading** of components for performance optimization
 - ⚡ Fast performance with Parcel bundler
 
 ## 🛠️ Tech Stack
@@ -20,7 +21,4 @@ A Swiggy-inspired food ordering web application built using **React.js**. It fet
 ## 🔗 Live Demo
 
 👉 [Visit Live Site](https://food-zone-web.vercel.app/)  
-👉 [View on GitHub](https://github.com/nayan-21/Food-zone-web)
-
-## 📌 Project Structure
 
