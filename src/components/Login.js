@@ -15,15 +15,9 @@ const Login = () => {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-     {/* <Navbar /> */}
-      {/* Header */}
+
       <div className="bg-white shadow-sm py-4 px-6 flex justify-between items-center">
         <h1 className="text-orange-500 font-bold text-xl">Food Zone</h1>
-        {/* <div className="flex space-x-4 text-gray-600">
-          <span>Home</span>
-          <span>About</span>
-          <span>Cart - 0</span>
-        </div> */}
       </div>
 
       {/* Login Card */}

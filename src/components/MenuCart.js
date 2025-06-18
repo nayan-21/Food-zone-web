@@ -7,7 +7,7 @@ const MenuCart = ({ data, showItems, setShowIndex }) => {
   };
 
   let logic = data?.categories?.map((c) => c.itemCards);
-  console.log("L", logic);
+  // console.log("L", logic);
 
   return (
     <div>

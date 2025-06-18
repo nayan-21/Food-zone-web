@@ -38,7 +38,6 @@ const Body = () => {
     <Simmar />
   ) : (
     <div className="body bg-[#f5f5f4] min-h-screen px-4 sm:px-6   ">
-      {/* Responsive Search Container */}
       <div className="Search-container flex flex-col sm:flex-row justify-between gap-2 sm:gap-4 mb-4">
         <input
           className="p-2 my-6 rounded-lg w-full sm:w-1/2 text-center outline-none shadow-md"
@@ -78,7 +77,7 @@ const Body = () => {
         </div>
       </div>
 
-      {/* Responsive Card Container */}
+
       <div className="res-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 place-items-center my-8">
         {filterList.map((res) => {
           return (

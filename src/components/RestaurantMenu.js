@@ -1,8 +1,9 @@
-import Simmar from "./Simmar";
+// import Simmar from "./Simmar";
 import { useParams } from "react-router";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import MenuCart from "./MenuCart";
 import { useState } from "react";
+import MenuShimmar from "./MenuSimmar";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -10,7 +11,7 @@ const RestaurantMenu = () => {
 
   const resInfo = useRestaurantMenu(resId);
 
-  if (resInfo === null) return <Simmar />;
+  if (resInfo === null) return <MenuShimmar />;
 
   const { text } = resInfo?.cards[0]?.card?.card;
 
@@ -39,8 +40,9 @@ const RestaurantMenu = () => {
             key={menu?.card?.card?.title}
             data={menu?.card?.card}
             showItems={index === showIndex ? true : false}
-           setShowIndex={() => setShowIndex(prevIndex => prevIndex === index ? null : index)}
-
+            setShowIndex={() =>
+              setShowIndex((prevIndex) => (prevIndex === index ? null : index))
+            }
           />
         ))}
       </div>

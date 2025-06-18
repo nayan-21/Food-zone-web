@@ -9,25 +9,27 @@ const Cart = () => {
   const handleClearCart = () => {
     dispatch(clearCart());
   };
+
   return (
     <div className="text-center m-4 p-4">
-      <h1 className="text-2xl font-bold ">Cart</h1>
-      <div className="w-6/12 m-auto">
-        <div className="mb-4">
-          {" "}
+      <h1 className="text-2xl font-bold mb-6">Cart</h1>
+
+      <div className="w-full sm:w-10/12 md:w-8/12 lg:w-6/12 mx-auto">
+        <div className="mb-6 flex flex-col items-center">
           <button
-            className="p-2 m-4 bg-black text-white rounded-lg"
+            className="px-5 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition"
             onClick={handleClearCart}
           >
             Clear Cart
           </button>
+
           {cartItems.length === 0 && (
-            <h1>Cart is empty. Add Items to the cart!</h1>
+            <h2 className="text-lg mt-4 text-gray-600">Cart is empty. Add Items to the cart!</h2>
           )}
         </div>
 
         {cartItems.length !== 0 && (
-          <div className="bg-white p-4 rounded-lg">
+          <div className="bg-white p-6 rounded-lg shadow-md">
             <ItemList items={cartItems} />
           </div>
         )}
