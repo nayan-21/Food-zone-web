@@ -16,7 +16,7 @@ A Swiggy-inspired food ordering web application built using **React.js**. It fet
 - **React.js**
 - **Tailwind CSS**
 - **Parcel Bundler**
-- **Swiggy API (Unofficial)**
+- **Swiggy API**
 
 ## 🔗 Live Demo
 
